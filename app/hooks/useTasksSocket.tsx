@@ -14,7 +14,7 @@ export const useTasksSocket = ({
   onTaskDeleted,
 }: UseTasksSocketProps) => {
   useEffect(() => {
-    const pusher = new Pusher(process.env.NEXT_PUSHER_KEY || "", {
+    const pusher = new Pusher("fb1a7949e4d0e8b353e1", {
       cluster: "eu",
     });
 
@@ -22,7 +22,12 @@ export const useTasksSocket = ({
 
     channel.bind("task-added", onTaskAdded);
     channel.bind("task-updated", onTaskUpdated);
-    channel.bind("task-deleted", onTaskDeleted);
+    // channel.bind("task-deleted", onTaskDeleted);
+
+    channel.bind("task-deleted", (data: { id: string }) => {
+      console.log("Received task-deleted event with id:", data.id);
+      onTaskDeleted(data.id);
+    });
 
     return () => {
       channel.unbind("task-added", onTaskAdded);

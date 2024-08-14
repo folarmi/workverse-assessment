@@ -20,8 +20,8 @@ This project is a real-time collaborative to-do list application that allows mul
 
 1. **Clone the Repository:**
 
-   git clone https://github.com/your-username/real-time-todo-list.git
-   cd real-time-todo-list
+- git clone https://github.com/folarmi/workverse-assessment.git
+- cd real-time-todo-list
 
 2. **Install Dependencies:**
    npm install

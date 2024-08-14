@@ -19,8 +19,8 @@ import { NextResponse } from "next/server";
 export async function DELETE(req: Request) {
   try {
     const { id } = await req.json();
-
     await pusher.trigger("tasks-channel", "task-deleted", { id });
+    console.log("trigger deletion");
 
     return NextResponse.json({ message: "Task deleted successfully" });
   } catch (error) {

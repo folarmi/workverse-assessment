@@ -9,9 +9,9 @@ export interface Task {
 }
 
 export const pusher = new Pusher({
-  appId: "1006631",
-  key: "fb1a7949e4d0e8b353e1",
-  secret: "4abcf4de2a1b9167e292",
+  appId: process.env.NEXT_APP_ID || "",
+  key: process.env.NEXT_PUSHER_KEY || "",
+  secret: process.env.NEXT_PUSHER_SECRET || "",
   cluster: "eu",
   useTLS: true,
 });

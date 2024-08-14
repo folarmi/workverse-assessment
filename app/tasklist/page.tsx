@@ -163,8 +163,6 @@ const TaskList = () => {
           >
             Add Task
           </button>
-
-          <p>{localStorage.getItem("currentUser")}</p>
         </div>
 
         <div className="justify-end ml-auto">
@@ -176,6 +174,10 @@ const TaskList = () => {
           </button>
         </div>
       </form>
+
+      <p className="text-center text-2xl py-8">
+        Current User: {localStorage.getItem("currentUser")}
+      </p>
 
       <ul className="space-y-4">
         {tasks?.map((task) => (

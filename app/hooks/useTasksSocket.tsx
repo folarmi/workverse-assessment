@@ -14,7 +14,7 @@ export const useTasksSocket = ({
   onTaskDeleted,
 }: UseTasksSocketProps) => {
   useEffect(() => {
-    const pusher = new Pusher("fb1a7949e4d0e8b353e1", {
+    const pusher = new Pusher(process.env.NEXT_PUSHER_KEY || "", {
       cluster: "eu",
     });
 

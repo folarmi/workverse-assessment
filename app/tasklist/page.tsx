@@ -72,22 +72,12 @@ const TaskList = () => {
 
   const handleDelete = async (id: string) => {
     try {
-      //   await axios.delete("/api/deleteTask", { data: { id } });
-
-      //   setTasks((prevTasks) => {
-      //     const updatedTasks = prevTasks.filter((task) => task.id !== id);
-      //     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-      //     return updatedTasks;
-      //   });
-
-      // Step 1: Optimistically update local state and storage
       setTasks((prevTasks) => {
         const updatedTasks = prevTasks.filter((task) => task.id !== id);
         localStorage.setItem("tasks", JSON.stringify(updatedTasks));
         return updatedTasks;
       });
 
-      // Step 2: Send the delete request to the backend to broadcast via Pusher
       await axios.delete("/api/deleteTask", { data: { id } });
     } catch (error) {
       console.error("Error deleting task:", error);
